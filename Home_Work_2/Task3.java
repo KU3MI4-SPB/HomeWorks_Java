@@ -1,25 +1,23 @@
 class Answer {
     public static void answer(String JSON, String ELEMENT1, String ELEMENT2, String ELEMENT3) {
-        String jsonString = "[{\"фамилия\":\"Иванов\",\"оценка\":\"5\",\"предмет\":\"Математика\"},"
-
-                + "{\"фамилия\":\"Петрова\",\"оценка\":\"4\",\"предмет\":\"Информатика\"},"
-
-                + "{\"фамилия\":\"Краснов\",\"оценка\":\"5\",\"предмет\":\"Физика\"}]";
-
         StringBuilder sb = new StringBuilder();
-
-        String[] splitString = jsonString.split("\\{");
-
-        for (int i = 1; i < splitString.length; i++) {
-                String[] studentInfo = splitString[i].replace("}]", "").split("\",\"");
-
-                sb.append("Студент " + studentInfo[0].split(":")[1].replace("\"", "") + " получил " + studentInfo[1].split(":")[1].replace("\"", "") + " по предмету " + studentInfo[2].split(":")[1].replace("\"", "").replace("},", "") + "\n");
-
+        String newJSON = JSON.replaceAll("\\{", "").replaceAll("\\}", "")
+            .replaceAll("\"", "").replace('[', ' ').replace(']', ' ');
+        String[] parts = newJSON.split(",");
+        for (String part : parts){
+            String[] params = part.split(":");
+            if("фамилия".equals(params[0].trim())) {
+                sb = new StringBuilder(ELEMENT1).append(params[1]);
+            }
+            else if("оценка".equals(params[0].trim())) sb.append(ELEMENT2).append(params[1]);
+            else if("предмет".equals(params[0].trim())) {
+                sb.append(ELEMENT3).append(params[1]);
+                System.out.println(sb);
+            }
         }
-        System.out.println(sb.toString());
-
     }
 }
+
 
 
 public class Task3{ 
