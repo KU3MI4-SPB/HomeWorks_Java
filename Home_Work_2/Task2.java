@@ -61,13 +61,11 @@ class BubbleSort {
 }
 
 
-// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
 public class Task2{ 
     public static void main(String[] args) { 
       int[] arr = {};
       
       if (args.length == 0) {
-        // При отправке кода на Выполнение, вы можете варьировать эти параметры
         arr = new int[]{9, 4, 8, 3, 1};
       }
       else{
