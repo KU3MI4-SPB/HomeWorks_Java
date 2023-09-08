@@ -46,13 +46,11 @@ public static int[] merge(int[] l, int[] r) {
     }
 }
 
-// Не удаляйте этот класс - он нужен для вывода результатов на экран и проверки
 public class Task1{ 
     public static void main(String[] args) { 
         int[] a;
 
         if (args.length == 0) {
-        // При отправке кода на Выполнение, вы можете варьировать эти параметры
             a = new int[]{5, 1, 6, 2, 3, 4};
         } else {
             a = Arrays.stream(args[0].split(", ")).mapToInt(Integer::parseInt).toArray();
